@@ -12,8 +12,8 @@ import org.hibernate.validator.constraints.NotBlank;
 @Setter
 public class Comment {
 
-    @NotBlank
+    @NotBlank(message = "comment can't be empty")
     private String comment;
-    @NotBlank
+    @NotBlank(message = "Author can't be empty")
     private String author;
 }
