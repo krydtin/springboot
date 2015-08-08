@@ -24,7 +24,7 @@ public class MethodArgumentNotValidExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, Object> handler(final MethodArgumentNotValidException ex) {
         final Map<String, Object> map = new HashMap<>();
-        final List<Object> mapErrors = new ArrayList<>();
+        final List<Map<String, Object>> mapErrors = new ArrayList<>();
 
         for (FieldError error : ex.getBindingResult().getFieldErrors()) {
             final Map<String, Object> mapError = new HashMap<>();
