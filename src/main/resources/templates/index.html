@@ -9,5 +9,14 @@
     <body>
         <div th:text="${comment.comment}"></div>
         <div th:text="${comment.author}"></div>
+
+        <form action="#" th:action="@{/}" th:object="${formComment}" method="post">
+            <input type="text" th:field="*{comment}" />
+            <input type="text" th:field="*{author}" />
+            <input type="submit" value="Save" />
+<!--            <ul th:if="${‪#‎fields‬.hasErrors('*')}">
+                <li th:each="err : ${#fields.detailedErrors()}" th:text="${err.fieldName} + ' ' + ${err.message}">Input is incorrect</li>
+            </ul>-->
+        </form>
     </body>
 </html>
