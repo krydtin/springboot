@@ -28,6 +28,6 @@ public class MethodArgumentNotValidExceptionHandler {
             mapErrors.add(mapError);
         }
         map.put("error", mapErrors);
-        return null;
+        return map;
     }
 }
