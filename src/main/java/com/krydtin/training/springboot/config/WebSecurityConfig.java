@@ -1,5 +1,6 @@
 package com.krydtin.training.springboot.config;
 
+import com.krydtin.training.springboot.services.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,6 +18,9 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
 @EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    @Autowired
+    private UserDetailsService userDetailsService;
+    
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -36,12 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                .withUser("admin")
-                .password("admin")
-                .roles("ADMIN")
-                .and().withUser("user").password("user").roles("USER");
+        auth.userDetailsService(userDetailsService);
     }
 
 }
