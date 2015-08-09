@@ -4,6 +4,7 @@ import com.krydtin.training.springboot.dto.Comment;
 import com.krydtin.training.springboot.repository.CommentRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +28,7 @@ public class HomeRestController {
         return commentRepository.findAll();
     }
 
+    @Secured("ROLE_ADMIN")
     @RequestMapping(method = RequestMethod.POST)
     public Comment save(@Validated @RequestBody final Comment comment) {
         return commentRepository.save(comment);
