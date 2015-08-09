@@ -2,8 +2,10 @@ package com.krydtin.training.springboot.dto;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
@@ -20,10 +22,12 @@ public class Users implements UserDetails {
     @Id
     private String username;
     private String password;
+    @OneToMany
+    private List<Authority> authoritys;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.EMPTY_LIST;
+        return this.authoritys;
     }
 
     @Override
