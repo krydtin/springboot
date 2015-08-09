@@ -22,11 +22,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf()
                 .disable()
-                .authorizeRequests()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .httpBasic();
+                    .authorizeRequests()
+                    .anyRequest()
+                    .authenticated()
+                    .and()
+                .formLogin()
+                    .permitAll()
+                    .and()
+                    .logout()
+                    .permitAll();
     }
 
     @Autowired
