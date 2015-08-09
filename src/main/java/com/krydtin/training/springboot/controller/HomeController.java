@@ -1,6 +1,7 @@
 package com.krydtin.training.springboot.controller;
 
 import com.krydtin.training.springboot.dto.Comment;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,6 +27,7 @@ public class HomeController {
         return "index";
     }
     
+    @Secured("ROLE_ADMIN")
     @RequestMapping(method = RequestMethod.POST)
     public String save(@ModelAttribute("formComment") final Comment comment, Model model) {
         System.out.println(comment.getComment());

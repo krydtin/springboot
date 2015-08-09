@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import lombok.Getter;
@@ -22,7 +23,7 @@ public class Users implements UserDetails {
     @Id
     private String username;
     private String password;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Authority> authoritys;
 
     @Override
