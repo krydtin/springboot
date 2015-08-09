@@ -27,4 +27,11 @@ public class Comment {
     private String comment;
     @NotBlank(message = "Author can't be empty")
     private String author;
+
+    @Override
+    public String toString() {
+        return "Comment{" + "id=" + id + ", comment=" + comment + ", author=" + author + '}';
+    }
+    
+    
 }

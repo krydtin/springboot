@@ -15,7 +15,7 @@ import org.springframework.security.config.annotation.web.servlet.configuration.
  */
 @Configuration
 @EnableWebMvcSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)
+//@EnableGlobalMethodSecurity(securedEnabled = true, proxyTargetClass = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
