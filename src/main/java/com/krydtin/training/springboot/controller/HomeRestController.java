@@ -33,7 +33,7 @@ public class HomeRestController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public List<Comment> delete(@PathVariable("id") Integer id) {
+    public List<Comment> delete(@PathVariable("id") final Integer id) {
         commentRepository.delete(id);
         return commentRepository.findAll();
     }
@@ -44,7 +44,18 @@ public class HomeRestController {
     }
 
     @RequestMapping(value = "/find/{id}", method = RequestMethod.GET)
-    public Comment findOne(@PathVariable("id") Integer id) {
+    public Comment findOne(@PathVariable("id") final Integer id) {
         return commentRepository.findOne(id);
+    }
+
+    @RequestMapping(value = "/search/{comment}", method = RequestMethod.GET)
+    public List<Comment> searchComment(@PathVariable("comment") final String keyword) {
+        return commentRepository.findByCommentLike("%" + keyword + "%");
+    }
+
+    @RequestMapping(value = "/find/{comment}/{author}", method = RequestMethod.GET)
+    public List<Comment> findCommentAndAuthor(@PathVariable("comment") final String comment,
+            @PathVariable("author") final String author) {
+        return commentRepository.findByCommentAndAuthor(comment, author);
     }
 }
