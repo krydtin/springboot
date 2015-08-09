@@ -37,9 +37,14 @@ public class HomeRestController {
         commentRepository.delete(id);
         return commentRepository.findAll();
     }
-    
+
     @RequestMapping(method = RequestMethod.PUT)
-    public Comment update(@Validated @RequestBody final Comment comment){
+    public Comment update(@Validated @RequestBody final Comment comment) {
         return commentRepository.save(comment);
+    }
+
+    @RequestMapping(value = "/find/{id}", method = RequestMethod.GET)
+    public Comment findOne(@PathVariable("id") Integer id) {
+        return commentRepository.findOne(id);
     }
 }
